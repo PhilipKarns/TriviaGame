@@ -1,10 +1,13 @@
 //hide form and click start button to begin the game
 window.onload = function() {
 	$("#content").hide();
+	$("#results").hide();
 	$("#start").on("click", countdown.start);	
 }
 
 var intervalId;
+
+
 //create countdown object
 var countdown = {
 
@@ -31,7 +34,7 @@ var countdown = {
     	if (seconds < 10) {
     		seconds = "0" + seconds;
     	}
-    	 if (seconds == 0) {
+    	 if (seconds == 0 ) {
 			countdown.stop(seconds);
 
     	 	
@@ -42,10 +45,24 @@ var countdown = {
     //stop at 0:00
     stop: function(stop) {
     	 var stop = clearInterval(intervalId);
-    	 alert('You Lose');
     	 $("#content").hide();
+    	 $("#start").hide();
     	 $("#results").show();
     },
 
+    done: function() {
+    	 var done = clearInterval(intervalId);
+    	 $("#content").hide();
+    	 $("#start").hide();
+    	 $("#results").show();
+    }
 
 };
+
+ $("#done").click(countdown.done);
+//$("#done").on("click", function() {
+	
+	//$("#results").show();
+	//console.log(done);
+	
+//});
