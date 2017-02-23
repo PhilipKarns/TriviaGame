@@ -6,12 +6,16 @@ window.onload = function() {
 }
 
 var intervalId;
-
+var correct = 0;
+var incorrect = 0;
+var unanswered = 0;
+var answers = ["c", "a", "b", "d", "c", "a", "c", "b", "d", "b"];
+var userChoice=[];
 
 //create countdown object
 var countdown = {
 
-	time: 10,
+	time: 60,
 	
 	start: function() {
 	//hide the start button and show form. Use setInterval to start the count.
@@ -59,10 +63,18 @@ var countdown = {
 
 };
 
+//when submit button clicked run done function
  $("#done").click(countdown.done);
-//$("#done").on("click", function() {
-	
-	//$("#results").show();
-	//console.log(done);
-	
-//});
+
+//checking for correct answer
+ var answer = $("input[name='quizQuestion1']").on("click", function() {
+	if (value="correct") {
+		correct++;
+	} if (value="incorrect") {
+		incorrect++;
+	} else {
+		unanswered++;
+	}
+	console.log(answer);
+});
+
